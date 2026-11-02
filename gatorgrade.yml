@@ -33,7 +33,7 @@
   options:
     command: uv run pytest tests/test_field_station.py::test_main_prints_every_report
 
-- description: "[GIT] At least three pull requests are merged with Merge pull request: one per class, then one for main.py"
+- description: "[GIT] One pull request per class file, then one for main.py, each merged with Merge pull request"
   check: ExecuteCommand
   options:
     command: uv run pytest tests/test_field_station.py::test_pull_requests_were_merged

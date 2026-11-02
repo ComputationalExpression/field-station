@@ -7,7 +7,7 @@
 |Progress |[![Grade](../../actions/workflows/main.yml/badge.svg?branch=main)](../../actions/workflows/main.yml) |
 
 The field station at the Bousson Environmental Research Reserve keeps track of what happens on
-its land. Your team shares this one repository. Each of you writes a class for one thing the
+its land. Your team of three or four shares this one repository. Each of you writes a class for one thing the
 station tracks, in your own file, on your own branch, and merges it through a pull request that
 a teammate approves. Then one of you brings every class together in `main.py`. If a step
 confuses you, please ask about it while you are still in the room.
@@ -62,15 +62,17 @@ The slides for each step are
    `git push -u origin your-name`, or **Publish Branch** in Source Control
 4. **Open a pull request** on GitHub with **Compare & pull request**
    ([slide 6](https://computationalexpression.com/slides/week-11-session-3/#6))
-5. **Review a teammate's pull request**: open **Files changed**, comment on at least one line,
-   then **Review changes**, **Approve**, and **Submit review**
+5. **Review a teammate's pull request**, in a circle so that each of you reviews one: in
+   alphabetical order by first name, each person reviews the next person's, and the last
+   reviews the first. Open **Files changed**, comment on at least one line, then
+   **Review changes**, **Approve**, and **Submit review**
 6. **Merge your approved pull request** with **Merge pull request**, not Squash and merge
 7. **Bring the station together.** Once every class is merged, one teammate updates `main`
    ([slide 7](https://computationalexpression.com/slides/week-11-session-3/#7)), makes a branch
    named `station`, and in `main.py` imports each class, makes an object of each in
    `make_station`, records something in it, and appends it to `station`. Put every teammate's
-   name on the `Author:` line and delete each `TODO`. Another teammate reviews and approves
-   that pull request, then it is merged
+   name on the `Author:` line and delete each `TODO`. A teammate who did not write it reviews
+   and approves that pull request, then it is merged
 8. **Everyone updates `main`** with `git switch main` and `git pull`, then runs the program and
    the checks
 

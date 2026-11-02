@@ -148,13 +148,14 @@ def test_main_prints_every_report(capsys):
 
 
 def test_pull_requests_were_merged():
-    """At least three pull requests were merged: one per class and one for main.py."""
+    """One merged pull request per class file, plus one for main.py."""
     subjects = git("log", "--merges", "--format=%s").splitlines()
     merged = [subject for subject in subjects if "pull request" in subject.lower()]
-    assert len(merged) >= 3, (
-        f"Found {len(merged)} merged pull requests on this branch. A team of two merges three: "
-        "one for each class, then one for main.py. Merge with Merge pull request, "
-        "not Squash and merge, and pull main before you run this check."
+    needed = max(len(class_files()), 2) + 1
+    assert len(merged) >= needed, (
+        f"Found {len(merged)} merged pull requests, and this team needs {needed}: one for each "
+        "class file, then one for main.py. Merge with Merge pull request, not Squash and merge, "
+        "and pull main before you run this check."
     )
 
 
