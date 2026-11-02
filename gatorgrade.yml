@@ -1,0 +1,52 @@
+# Nine checks: three read the class files as Python, three run the program, two read the
+# repository's history, and one reads the text of main.py. The class checks read every file
+# in src except main.py, so they work for a team of any size. Pull main before you run them,
+# so you have every teammate's merged work.
+
+- description: "[CLASS] Each teammate has a file in src with a class in it, so a team has at least two"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_each_teammate_has_a_class_file
+
+- description: "[CLASS] Each class has __init__, and it stores each starting value as self.something"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_each_init_sets_attributes
+
+- description: "[CLASS] Each class has a method besides __init__ and report that changes one of its attributes"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_each_class_has_a_method_that_records
+
+- description: "[MAIN] make_station returns objects whose report method returns a string, with return rather than print"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_each_report_returns_a_string
+
+- description: "[MAIN] make_station has an object from every class file: import each class in main.py"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_station_has_every_class_file
+
+- description: "[MAIN] The program prints the report of every object at the station"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_main_prints_every_report
+
+- description: "[GIT] At least three pull requests are merged with Merge pull request: one per class, then one for main.py"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_pull_requests_were_merged
+
+- description: "[GIT] The class files have commits from at least two teammates"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_teammates_each_committed_a_class
+
+- src/main.py:
+  - description: "[CODE] No TODO markers remain in main.py: delete each one once its code is written, including Author"
+    check: MatchFileFragment
+    options:
+      fragment: TODO
+      count: 0
+      exact: true
