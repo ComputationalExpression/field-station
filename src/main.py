@@ -1,20 +1,34 @@
 """Activity 9: Field Station.
 
 The field station at the Bousson Environmental Research Reserve keeps track of what happens on
-its land. Each teammate writes a class for one thing the station tracks, in a separate file in
-src. This file brings those classes together.
+its land. Each class is in its own file in src, and this file brings them together.
 
 Author: TODO the names of everyone on your team
 """
 
-# TODO: Import each teammate's class, one line per file, such as: from feeder import Feeder
+from creek_gauge import CreekGauge
+from feeder import Feeder
+from rain_gauge import RainGauge
+from trail_camera import TrailCamera
 
 
 def make_station():
-    """Make an object of each teammate's class and return the objects in a list."""
+    """Make an object of each class, record something in it, and return the objects in a list."""
     station = []
-    # TODO: For each class, make an object, call a method that records something in it,
-    # and append the object to station.
+    feeder = Feeder("the pond")
+    feeder.visit(4)
+    feeder.visit(2)
+    gauge = RainGauge("the meadow")
+    gauge.record(4)
+    gauge.record(11)
+    camera = TrailCamera("the creek trail")
+    camera.photograph("deer")
+    camera.photograph("heron")
+    creek = CreekGauge("French Creek")
+    creek.record(31)
+    creek.record(52)
+    creek.record(45)
+    # TODO: Append feeder, gauge, camera and creek to station, in that order
     return station
 
 

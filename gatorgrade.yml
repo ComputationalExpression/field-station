@@ -1,52 +1,49 @@
-# Nine checks: three read the class files as Python, three run the program, two read the
-# repository's history, and one reads the text of main.py. The class checks read every file
-# in src except main.py, so they work for a team of any size. Pull main before you run them,
-# so you have every teammate's merged work.
+# Nine checks: four call one class each, two run the program, two read the repository's
+# history, and one reads the text of every file in src. Each class check passes on its own
+# file, whatever state the others are in. Pull main before you run the checks, so you have
+# every teammate's merged work.
 
-- description: "[CLASS] Each teammate has a file in src with a class in it, so a team has at least two"
+- description: "[FEEDER] visit(birds) adds birds to visits"
   check: ExecuteCommand
   options:
-    command: uv run pytest tests/test_field_station.py::test_each_teammate_has_a_class_file
+    command: uv run pytest tests/test_field_station.py::test_feeder_counts_visits
 
-- description: "[CLASS] Each class has __init__, and it stores each starting value as self.something"
+- description: "[RAIN GAUGE] record(millimeters) adds to total and adds 1 to readings"
   check: ExecuteCommand
   options:
-    command: uv run pytest tests/test_field_station.py::test_each_init_sets_attributes
+    command: uv run pytest tests/test_field_station.py::test_rain_gauge_totals_the_rain
 
-- description: "[CLASS] Each class has a method besides __init__ and report that changes one of its attributes"
+- description: "[TRAIL CAMERA] photograph(animal) appends the animal to animals and stores it as last"
   check: ExecuteCommand
   options:
-    command: uv run pytest tests/test_field_station.py::test_each_class_has_a_method_that_records
+    command: uv run pytest tests/test_field_station.py::test_trail_camera_keeps_the_animals
 
-- description: "[MAIN] make_station returns objects whose report method returns a string, with return rather than print"
+- description: "[CREEK GAUGE] record(level) appends the level to levels and keeps the highest"
   check: ExecuteCommand
   options:
-    command: uv run pytest tests/test_field_station.py::test_each_report_returns_a_string
+    command: uv run pytest tests/test_field_station.py::test_creek_gauge_keeps_the_highest
 
-- description: "[MAIN] make_station has an object from every class file: import each class in main.py"
+- description: "[MAIN] make_station returns the feeder, gauge, camera and creek, in that order"
   check: ExecuteCommand
   options:
-    command: uv run pytest tests/test_field_station.py::test_station_has_every_class_file
+    command: uv run pytest tests/test_field_station.py::test_station_has_all_four
 
 - description: "[MAIN] The program prints the report of every object at the station"
   check: ExecuteCommand
   options:
     command: uv run pytest tests/test_field_station.py::test_main_prints_every_report
 
-- description: "[GIT] One pull request per class file, then one for main.py, each merged with Merge pull request"
+- description: "[GIT] At least five pull requests are merged with Merge pull request: one per class file, then one for main.py"
   check: ExecuteCommand
   options:
     command: uv run pytest tests/test_field_station.py::test_pull_requests_were_merged
 
-- description: "[GIT] The class files have commits from at least two teammates"
+- description: "[GIT] The files in src have commits from at least two teammates"
   check: ExecuteCommand
   options:
-    command: uv run pytest tests/test_field_station.py::test_teammates_each_committed_a_class
+    command: uv run pytest tests/test_field_station.py::test_teammates_each_committed
 
-- src/main.py:
-  - description: "[CODE] No TODO markers remain in main.py: delete each one once its code is written, including Author"
-    check: MatchFileFragment
-    options:
-      fragment: TODO
-      count: 0
-      exact: true
+- description: "[CODE] No TODO markers remain in any file in src, including the Author lines"
+  check: ExecuteCommand
+  options:
+    command: uv run pytest tests/test_field_station.py::test_no_todo_remains

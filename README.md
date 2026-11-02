@@ -5,12 +5,11 @@
 |Released |Friday, November 6, in class |
 |Due |Monday, November 9, 9:00am |
 |Progress |[![Grade](../../actions/workflows/main.yml/badge.svg?branch=main)](../../actions/workflows/main.yml) |
-
 The field station at the Bousson Environmental Research Reserve keeps track of what happens on
-its land. Your team of three or four shares this one repository. Each of you writes a class for one thing the
-station tracks, in your own file, on your own branch, and merges it through a pull request that
-a teammate approves. Then one of you brings every class together in `main.py`. If a step
-confuses you, please ask about it while you are still in the room.
+its land. Your team of three or four shares this one repository. The code is nearly all
+written, so most of your time goes to the team workflow: each of you finishes one class, on your
+own branch, and merges it through a pull request that a teammate approves. Then one of you
+finishes `main.py`. If a step confuses you, please ask about it while you are still in the room.
 
 ## Course learning outcomes
 
@@ -24,25 +23,27 @@ integrated development environments (IDEs), command-line tools, and version cont
 
 Specifically, by the end of this activity you should be able to:
 
-* write a class with `__init__`, attributes, and methods, in a file of its own
-* import a class from another file
+* finish a method that changes an attribute of `self`
 * work on a branch, open a pull request, review a teammate's, and merge it
+* update `main` after a teammate's merge
 
-## Your class
+## Your file
 
-Each teammate picks a different thing the station tracks, such as birds at a feeder, rain,
-hikers on a trail, photos from a trail camera, or the level of the creek. Agree as a team who
-takes which. Your class goes in its own file in `src`, named for the thing, such as
-`src/feeder.py`, and has:
+Each class is in its own file in `src`, with `__init__` and `report` written. What is left is
+its recording method, marked `TODO`, plus your name on the `Author:` line:
 
-* `__init__`, which stores each starting value as an attribute of `self`
-  ([Classes and Objects](https://computationalexpression.com/slides/week-11-session-2/#3), slide 3)
-* a method that records something by changing an attribute
-  ([slide 8](https://computationalexpression.com/slides/week-11-session-2/#8))
-* `report(self)`, which returns one line of text about the object, with `return`, not `print`
+|File |Class |Finish this method |
+|:----|:-----|:------------------|
+|`src/feeder.py` |`Feeder` |`visit(birds)`: add `birds` to `self.visits` |
+|`src/rain_gauge.py` |`RainGauge` |`record(millimeters)`: add to `self.total`, and add 1 to `self.readings` |
+|`src/trail_camera.py` |`TrailCamera` |`photograph(animal)`: append to `self.animals`, and store it as `self.last` |
+|`src/creek_gauge.py` |`CreekGauge` |`record(level)`: append to `self.levels`, and keep the highest in `self.highest` |
 
-To try your class before the pull request, add an `if __name__ == "__main__":` block at the
-bottom of your file that makes an object, records something, and prints its report. Run it:
+Agree who takes which file. In a team of three, one of you takes two files, each on a branch of
+its own with its own pull request. Methods that change an attribute are on
+[Classes and Objects, slide 8](https://computationalexpression.com/slides/week-11-session-2/#8).
+
+Each file runs by itself, and its last comment says what it should print:
 
 ```text
 uv run python src/feeder.py
@@ -57,7 +58,7 @@ The slides for each step are
    ([slide 5](https://computationalexpression.com/slides/week-11-session-3/#5)):
    `git switch -c your-name`, or click the branch name at the bottom left of VS Code and
    choose **Create new branch**
-2. **Write your class** in your own file. Do not change `main.py` yet
+2. **Finish your method** and put your name on the `Author:` line. Change only your file
 3. **Commit and push your branch**: `git add` your file, `git commit`, then
    `git push -u origin your-name`, or **Publish Branch** in Source Control
 4. **Open a pull request** on GitHub with **Compare & pull request**
@@ -67,12 +68,11 @@ The slides for each step are
    reviews the first. Open **Files changed**, comment on at least one line, then
    **Review changes**, **Approve**, and **Submit review**
 6. **Merge your approved pull request** with **Merge pull request**, not Squash and merge
-7. **Bring the station together.** Once every class is merged, one teammate updates `main`
+7. **Finish `main.py`.** Once all four classes are merged, one teammate updates `main`
    ([slide 7](https://computationalexpression.com/slides/week-11-session-3/#7)), makes a branch
-   named `station`, and in `main.py` imports each class, makes an object of each in
-   `make_station`, records something in it, and appends it to `station`. Put every teammate's
-   name on the `Author:` line and delete each `TODO`. A teammate who did not write it reviews
-   and approves that pull request, then it is merged
+   named `station`, appends the four objects to `station` in `make_station`, and puts every
+   teammate's name on the `Author:` line. A teammate who did not write it reviews and approves
+   that pull request, then it is merged
 8. **Everyone updates `main`** with `git switch main` and `git pull`, then runs the program and
    the checks
 
@@ -83,8 +83,10 @@ $ uv run python src/main.py
 ==================================================
 BOUSSON FIELD STATION
 ==================================================
+Feeder at the pond: 6 birds
 Rain at the meadow: 15 mm over 2 readings
 Camera on the creek trail: 2 photos, the last a heron
+French Creek: 3 readings, highest 52
 ```
 
 ## Evaluation
