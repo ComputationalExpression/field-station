@@ -41,7 +41,7 @@ its recording method, marked `TODO`, plus your name on the `Author:` line:
 
 Agree who takes which file. In a team of three, one of you takes two files, each on a branch of
 its own with its own pull request. Methods that change an attribute are on
-[Classes and Objects, slide 8](https://computationalexpression.com/slides/week-11-session-2/#8).
+[Classes and Objects, slide 7](https://computationalexpression.com/slides/week-11-session-2/#7).
 
 Each file runs by itself, and its last comment says what it should print:
 
