@@ -5,6 +5,7 @@
 |Released |Friday, November 6, in class |
 |Due |Monday, November 9, 9:00am |
 |Progress |[![Grade](../../actions/workflows/main.yml/badge.svg?branch=main)](../../actions/workflows/main.yml) |
+
 The field station at the Bousson Environmental Research Reserve keeps track of what happens on
 its land. Your team of three or four shares this one repository. The code is nearly all
 written, so most of your time goes to the team workflow: each of you finishes one class, on your
