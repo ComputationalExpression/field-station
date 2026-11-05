@@ -94,14 +94,11 @@ French Creek: 3 readings, highest 52
 
 In-class activities are graded on completion and contribute to the **In-Class Activities**
 category on the syllabus (10 points, averaged across the semester). This activity is worth one
-activity grade. Each teammate's grade comes from their own class, their own pull request, and
-the review they gave. What is graded is the attempt, not whether every value comes out right.
+activity grade. Each of you earns a checkmark by doing all three of these:
 
-|Level |What it looks like |
-|:-----|:------------------|
-|**Complete** |At least half of the activity is done |
-|**Partial** |Less than half is done, but something beyond the starter was committed |
-|**Incomplete** |Nothing was changed |
+* push something to your branch
+* open a pull request
+* review at least one teammate's pull request
 
 Run the automated checks yourself, as many times as you like, from the top folder of this
 repository rather than from inside `src`, after `git pull` on `main`:
@@ -119,8 +116,8 @@ was expected.
 
 ## Submitting
 
-The `main` branch on GitHub at the deadline is what gets graded, so merge every pull request
-before then. Open your repository on GitHub and confirm each class file and the finished
-`main.py` are on `main`.
+Your branch, your pull request, and your review are graded as they stand on GitHub at the
+deadline. Please merge every pull request before then, then open your repository on GitHub and
+confirm each class file and the finished `main.py` are on `main`.
 
 If you need more time, apply a late token with [this form](https://forms.gle/3nGbpaNrG96DpLLdA).
