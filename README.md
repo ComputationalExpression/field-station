@@ -94,11 +94,13 @@ French Creek: 3 readings, highest 52
 
 In-class activities are graded on completion and contribute to the **In-Class Activities**
 category on the syllabus (10 points, averaged across the semester). This activity is worth one
-activity grade. Each of you earns a checkmark by doing all three of these:
+activity grade, and each teammate is graded on their own work:
 
-* push something to your branch
-* open a pull request
-* review at least one teammate's pull request
+|Level |What it looks like |
+|:-----|:------------------|
+|**Complete** |You pushed something to your branch, opened a pull request, and reviewed at least one teammate's pull request |
+|**Partial** |You did one or two of those three |
+|**Incomplete** |You did none of those three |
 
 Run the automated checks yourself, as many times as you like, from the top folder of this
 repository rather than from inside `src`, after `git pull` on `main`:
